@@ -31,12 +31,14 @@ if (env.name !== "production") {
 }
 
 app.on("ready", () => {
-  setApplicationMenu();
+  // setApplicationMenu();
 
   const mainWindow = createWindow("main", {
     width: 1000,
     height: 600
   });
+
+  mainWindow.setMenuBarVisibility(false)
 
   mainWindow.loadURL(
     url.format({
