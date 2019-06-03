@@ -1,27 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Cashier Appa</title>
-</head>
-<body>
+	<head lang="en">
+	  <meta charset="utf-8">
+	  <title>Cashier App</title>
+	</head>
+	<body>
 
-  <div id="app" class="container" style="display: none;">
-    <h1 id="greet"></h1>
-    <p>
-      Welcome to <a href="http://electron.atom.io" class="js-external-link">Electron</a> app running on this <strong id="os"></strong> machine.
-    </p>
-    <p>
-      App author: <strong id="author"></strong>
-    </p>
-    <p>
-      Environment: <strong id="env"></strong>
-    </p>
-    <p>
-      Electron version: <strong id="electron-version"></strong>
-    </p>
-  </div>
+	  <div ng-app="mainApp">
+		  <ng-view></ng-view>
+	  </div>
 
-  <script src="app.js"></script>
-</body>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    
+    <script type="text/javascript" src="app.js"></script>
+	</body>
 </html>
