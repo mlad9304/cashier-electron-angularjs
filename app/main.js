@@ -2,25 +2,32 @@ var mainApp = angular.module("mainApp", ['ngRoute']);
 
 mainApp.config(function($routeProvider) {
 	$routeProvider
-		.when('/home', {
-			templateUrl: 'pages/home/login.html',
-			controller: 'StudentController'
+		.when('/login', {
+			templateUrl: 'pages/auth/login.html',
+			controller: 'authController'
+    })
+    .when('/register', {
+			templateUrl: 'pages/auth/register.html',
+			controller: 'authController'
 		})
 		.when('/dashboard', {
 			templateUrl: 'pages/dashboard/index.html',
-			controller: 'StudentController'
+			controller: 'dashboardController'
 		})
 		.otherwise({
-			redirectTo: '/home'
+			redirectTo: '/login'
 		});
 });
 
-mainApp.controller('StudentController', function($scope) {
-	$scope.students = [
-		{name: 'Mark Waugh', city:'New York'},
-		{name: 'Steve Jonathan', city:'London'},
-		{name: 'John Marcus', city:'Paris'}
-	];
+mainApp.controller('authController', function($scope) {
+  $('input[type="checkbox"]').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'iradio_square-blue',
+    increaseArea: '20%' /* optional */
+  });
 
-	$scope.message = "Click on the hyper link to view the students list.";
+});
+
+mainApp.controller('dashboardController', function($scope) {
+  $('#example1').DataTable()
 });

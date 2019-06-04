@@ -27,7 +27,7 @@ app.on("ready", () => {
     height: 600
   });
 
-  mainWindow.setMenuBarVisibility(false)
+  mainWindow.setMenuBarVisibility(false);
 
   mainWindow.loadURL(
     url.format({
