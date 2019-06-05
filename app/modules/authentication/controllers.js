@@ -12,19 +12,39 @@ angular.module('Authentication')
         increaseArea: '20%' /* optional */
       });
 
-      // reset login status
-      AuthenticationService.ClearCredentials();
+      $scope.gotoRegister = function () {
+        $location.path('/register');
+      }
+
+      $scope.gotoLogin = function () {
+        $location.path('/login');
+      }
 
       $scope.login = function () {
-          $scope.dataLoading = true;
-          AuthenticationService.Login($scope.email, $scope.password, function(response) {
-              if(response.success) {
-                  AuthenticationService.SetCredentials($scope.email, $scope.password);
-                  $location.path('/');
-              } else {
-                  $scope.error = response.message;
-                  $scope.dataLoading = false;
-              }
-          });
+        $scope.dataLoading = true;
+        AuthenticationService.Login($scope.email, $scope.password, function(response) {
+          if(response.response) {
+              const { token, name, surname, email } = response.response.result;
+              AuthenticationService.SetCredentials(token, name, surname, email);
+              $location.path('/');
+          } else {
+              $scope.error = response.error.message;
+              $scope.dataLoading = false;
+          }
+        });
+      };
+
+      $scope.register = function () {
+        $scope.dataLoading = true;
+        AuthenticationService.Register(
+          $scope.name, $scope.surname, $scope.address, $scope.zipcode,
+          $scope.city, $scope.phone, $scope.email, $scope.password, function(response) {
+          if(!response.error) {
+              $location.path('/login');
+          } else {
+              $scope.error = response.error.message;
+              $scope.dataLoading = false;
+          }
+        });
       };
     }]);

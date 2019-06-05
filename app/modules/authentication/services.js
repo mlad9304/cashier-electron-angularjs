@@ -9,37 +9,42 @@ angular.module('Authentication')
 
         service.Login = function (email, password, callback) {
 
-            /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
-            $timeout(function(){
-                var response = { success: email === 'test@email.com' && password === 'test' };
-                if(!response.success) {
-                    response.message = 'Email or password is incorrect';
-                }
-                callback(response);
-            }, 1000);
-
-
             /* Use this for real authentication
              ----------------------------------------------*/
-            //$http.post('/api/authenticate', { email: email, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
+            const payload = {
+              name: 'login',
+              param: { email, password }
+             };
+            $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+                .then(function (response) {
+                  callback(response.data);
+                }, function (error) {
+                  console.log(error);
+                });
 
         };
 
-        service.SetCredentials = function (email, password) {
-            var authdata = Base64.encode(email + ':' + password);
+        service.Register = function (name, surname, address, zipcode, city, phone, email, password, callback) {
+            const payload = {
+              name: 'register',
+              param: { name, surname, address, zipcode, city, phone, email, password }
+            }
+
+            $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+                .then(function (response) {
+                  callback(response.data);
+                }, function (error) {
+                  console.log(error);
+                });
+        };
+
+        service.SetCredentials = function (token, name, surname, email) {
 
             $rootScope.globals = {
-                currentUser: {
-                    email: email,
-                    authdata: authdata
-                }
+                currentUser: { token, name, surname, email }
             };
 
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+            $http.defaults.headers.common['Authorization'] = 'Bearer ' + token; // jshint ignore:line
 
             $window.localStorage.setItem('globals', JSON.stringify($rootScope.globals));
         };
@@ -47,7 +52,7 @@ angular.module('Authentication')
         service.ClearCredentials = function () {
             $rootScope.globals = {};
             $window.localStorage.removeItem('globals');
-            $http.defaults.headers.common.Authorization = 'Basic ';
+            $http.defaults.headers.common.Authorization = 'Bearer ';
         };
 
         return service;
