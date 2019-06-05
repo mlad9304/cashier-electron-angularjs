@@ -7,8 +7,7 @@ angular.module('Home', []);
 angular.module('mainApp', [
     'Authentication',
     'Home',
-    'ngRoute',
-    'ngCookies'
+    'ngRoute'
 ])
 
 .config(['$routeProvider', function ($routeProvider) {
@@ -34,10 +33,10 @@ angular.module('mainApp', [
         .otherwise({ redirectTo: '/login' });
 }])
 
-.run(['$rootScope', '$location', '$cookieStore', '$http',
-    function ($rootScope, $location, $cookieStore, $http) {
+.run(['$rootScope', '$location', '$window', '$http',
+    function ($rootScope, $location, $window, $http) {
         // keep user logged in after page refresh
-        $rootScope.globals = $cookieStore.get('globals') || {};
+        $rootScope.globals = JSON.parse($window.localStorage.getItem('globals')) || {};
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
         }
