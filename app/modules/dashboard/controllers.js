@@ -23,4 +23,11 @@ angular.module('Dashboard')
       AuthenticationService.ClearCredentials();
       $state.go('login');
     }
+
+    const globals = JSON.parse($window.localStorage.getItem('globals')) || {}
+    if (globals.currentUser) {
+      $scope.name = globals.currentUser.name;
+      $scope.surname = globals.currentUser.surname;
+      $scope.email = globals.currentUser.email;
+    }
   }]);
