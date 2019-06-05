@@ -3,8 +3,8 @@
 angular.module('Authentication')
 
 .controller('AuthController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', 'AuthenticationService', '$state',
+    function ($scope, $rootScope, AuthenticationService, $state) {
 
       $('input[type="checkbox"]').iCheck({
         checkboxClass: 'icheckbox_square-blue',
@@ -12,21 +12,13 @@ angular.module('Authentication')
         increaseArea: '20%' /* optional */
       });
 
-      $scope.gotoRegister = function () {
-        $location.path('/register');
-      }
-
-      $scope.gotoLogin = function () {
-        $location.path('/login');
-      }
-
       $scope.login = function () {
         $scope.dataLoading = true;
         AuthenticationService.Login($scope.email, $scope.password, function(response) {
           if(response.response) {
               const { token, name, surname, email } = response.response.result;
               AuthenticationService.SetCredentials(token, name, surname, email);
-              $location.path('/');
+              $state.go('dashboard.users');
           } else {
               $scope.error = response.error.message;
               $scope.dataLoading = false;
@@ -40,7 +32,7 @@ angular.module('Authentication')
           $scope.name, $scope.surname, $scope.address, $scope.zipcode,
           $scope.city, $scope.phone, $scope.email, $scope.password, function(response) {
           if(!response.error) {
-              $location.path('/login');
+              $state.go('login');
           } else {
               $scope.error = response.error.message;
               $scope.dataLoading = false;

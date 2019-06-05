@@ -7,30 +7,50 @@ angular.module('Home', []);
 angular.module('mainApp', [
     'Authentication',
     'Home',
-    'ngRoute'
+    // 'ngRoute',
+    'ui.router'
 ])
 
-.config(['$routeProvider', function ($routeProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-    $routeProvider
-        .when('/login', {
+    $stateProvider
+        .state('login', {
+          url: '/login',
           controller: 'AuthController',
-          templateUrl: 'modules/authentication/views/login.html',
-          hideMenus: true
+          templateUrl: 'modules/authentication/views/login.html'
         })
 
-        .when('/register', {
+        .state('register', {
+          url: '/register',
           controller: 'AuthController',
-          templateUrl: 'modules/authentication/views/register.html',
-          hideMenus: true
+          templateUrl: 'modules/authentication/views/register.html'
         })
 
-        .when('/', {
+        .state('dashboard', {
+          url: '/dashboard',
           controller: 'HomeController',
           templateUrl: 'modules/home/views/home.html'
         })
 
-        .otherwise({ redirectTo: '/login' });
+        .state('dashboard.users', {
+          url: '/dashboard1',
+          controller: 'HomeController',
+          templateUrl: 'modules/home/views/users.html'
+        })
+
+        .state('dashboard.dashboard1', {
+          url: '/dashboard1',
+          controller: 'HomeController',
+          templateUrl: 'modules/home/views/dashboard1.html'
+        })
+
+        .state('dashboard.dashboard2', {
+          url: '/dashboard2',
+          controller: 'HomeController',
+          templateUrl: 'modules/home/views/dashboard2.html'
+        })
+
+    $urlRouterProvider.otherwise('/login');
 }])
 
 .run(['$rootScope', '$location', '$window', '$http',

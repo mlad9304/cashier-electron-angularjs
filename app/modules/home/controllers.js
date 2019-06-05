@@ -3,13 +3,13 @@
 angular.module('Home')
 
 .controller('HomeController',
-  ['$scope', '$window', '$location', 'AuthenticationService',
-  function ($scope, $window, $location, AuthenticationService) {
+  ['$scope', '$window', 'AuthenticationService', '$state',
+  function ($scope, $window, AuthenticationService, $state) {
     $('#example1').DataTable();
     $('.sidebar-menu').tree();
 
     $scope.logout = function () {
       AuthenticationService.ClearCredentials();
-      $location.path('/login');
+      $state.go('login');
     }
   }]);
