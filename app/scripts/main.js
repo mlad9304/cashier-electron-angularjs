@@ -2,11 +2,11 @@
 
 // declare modules
 angular.module('Authentication', []);
-angular.module('Home', []);
+angular.module('Dashboard', []);
 
 angular.module('mainApp', [
     'Authentication',
-    'Home',
+    'Dashboard',
     // 'ngRoute',
     'ui.router'
 ])
@@ -28,26 +28,26 @@ angular.module('mainApp', [
 
         .state('dashboard', {
           url: '/dashboard',
-          controller: 'HomeController',
-          templateUrl: 'modules/home/views/home.html'
+          controller: 'DashboardController',
+          templateUrl: 'modules/dashboard/views/index.html'
         })
 
         .state('dashboard.users', {
           url: '/dashboard1',
-          controller: 'HomeController',
-          templateUrl: 'modules/home/views/users.html'
+          controller: 'DashboardController',
+          templateUrl: 'modules/dashboard/views/users.html'
         })
 
         .state('dashboard.dashboard1', {
           url: '/dashboard1',
-          controller: 'HomeController',
-          templateUrl: 'modules/home/views/dashboard1.html'
+          controller: 'DashboardController',
+          templateUrl: 'modules/dashboard/views/dashboard1.html'
         })
 
         .state('dashboard.dashboard2', {
           url: '/dashboard2',
-          controller: 'HomeController',
-          templateUrl: 'modules/home/views/dashboard2.html'
+          controller: 'DashboardController',
+          templateUrl: 'modules/dashboard/views/dashboard2.html'
         })
 
     $urlRouterProvider.otherwise('/login');

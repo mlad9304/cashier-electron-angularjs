@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('Home')
+angular.module('Dashboard')
 
-.controller('HomeController',
+.controller('DashboardController',
   ['$scope', '$window', 'AuthenticationService', '$state',
   function ($scope, $window, AuthenticationService, $state) {
     $('#example1').DataTable();
