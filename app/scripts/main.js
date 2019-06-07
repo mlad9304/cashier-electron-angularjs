@@ -38,6 +38,12 @@ angular.module('mainApp', [
           templateUrl: 'modules/dashboard/views/users.html'
         })
 
+        .state('dashboard.add_user', {
+          url: '/add_user',
+          controller: 'AddUserController',
+          templateUrl: 'modules/dashboard/views/add_user.html'
+        })
+
         .state('dashboard.user_edit', {
           url: '/user_edit/{id}',
           controller: 'UserEditController',

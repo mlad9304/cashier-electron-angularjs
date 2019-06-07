@@ -7,38 +7,46 @@
 
 <section class="content">
   <div class="register-box-body">
-    <p class="login-box-msg">Update user information</p>
+    <p class="login-box-msg">Add user</p>
 
     <div ng-show="error" class="alert alert-danger">{{error}}</div>
 
-    <form name="form" ng-submit="updateUser()" role="form">
+    <form name="form" ng-submit="addUser()" role="form">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Name" ng-model="detailUser.name" required>
+        <input type="text" class="form-control" placeholder="Name" ng-model="newUser.name" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Sur name" ng-model="detailUser.surname" required>
+        <input type="text" class="form-control" placeholder="Sur name" ng-model="newUser.surname" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Address" ng-model="detailUser.address" required>
+        <input type="text" class="form-control" placeholder="Address" ng-model="newUser.address" required>
         <span class="glyphicon glyphicon-home form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Zipcode" ng-model="detailUser.zipcode" required>
+        <input type="text" class="form-control" placeholder="Zipcode" ng-model="newUser.zipcode" required>
         <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="City" ng-model="detailUser.city" required>
+        <input type="text" class="form-control" placeholder="City" ng-model="newUser.city" required>
         <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Phone" ng-model="detailUser.phone" required>
+        <input type="text" class="form-control" placeholder="Phone" ng-model="newUser.phone" required>
         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" ng-model="detailUser.email" required>
+        <input type="email" class="form-control" placeholder="Email" ng-model="newUser.email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password" ng-model="newUser.password" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Retype password" ng-model="newUser.confirm_password" required>
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
@@ -47,7 +55,7 @@
         <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat"
-            ng-disabled="form.$invalid || dataLoading">
+            ng-disabled="form.$invalid || newUser.password != newUser.confirm_password || dataLoading">
             Save
             &nbsp;<img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
           </button>

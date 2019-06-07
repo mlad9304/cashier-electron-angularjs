@@ -65,5 +65,19 @@ angular.module('Dashboard')
               });
         };
 
+        service.AddUser = function (name, surname, address, zipcode, city, phone, email, password, callback) {
+          const payload = {
+            name: 'register',
+            param: { name, surname, address, zipcode, city, phone, email, password }
+          }
+
+          $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+              .then(function (response) {
+                callback(response.data);
+              }, function (error) {
+                console.log(error);
+              });
+        };
+
         return service;
     }]);
