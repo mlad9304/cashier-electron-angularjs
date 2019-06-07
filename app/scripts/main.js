@@ -44,6 +44,11 @@ angular.module('mainApp', [
           templateUrl: 'modules/dashboard/views/user_edit.html'
         })
 
+        .state('dashboard.user_delete', {
+          url: '/user_delete/{id}',
+          controller: 'UserDeleteController'
+        })
+
         .state('dashboard.dashboard1', {
           url: '/dashboard1',
           controller: 'DashboardController',

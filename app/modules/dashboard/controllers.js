@@ -62,4 +62,22 @@ angular.module('Dashboard')
       });
     }
 
+  }])
+
+  .controller('UserDeleteController',
+  ['$scope', '$window', '$state', 'DashboardService', '$stateParams',
+  function ($scope, $window, $state, DashboardService, $stateParams) {
+    console.log($stateParams.id)
+    if ($stateParams.id) {
+      DashboardService.DeleteUser($stateParams.id, function(response) {
+        if (response.response) {
+          $state.go('dashboard.users');
+        }
+        else {
+          $scope.error = response.error.message;
+          $scope.dataLoading = false;
+        }
+      });
+    }
+
   }]);
