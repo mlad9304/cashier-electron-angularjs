@@ -83,4 +83,42 @@ angular.module('Dashboard')
       });
     }
 
+  }])
+
+.controller('CustomersController',
+  ['$scope', '$window', '$state', 'DashboardService',
+  function ($scope, $window, $state, DashboardService) {
+    $scope.customers = [];
+
+    DashboardService.GetAllCustomers(function(response) {
+      if (response.response) {
+        const { customers } = response.response.result;
+        if (customers) {
+          $scope.customers = customers;
+        }
+      }
+    });
+
+  }])
+
+.controller('AddCustomerController',
+  ['$scope', '$window', '$state', 'DashboardService',
+  function ($scope, $window, $state, DashboardService) {
+    $scope.newCustomer = {};
+
+    $scope.addCustomer = function () {
+      $scope.dataLoading = true;
+      DashboardService.AddCustomer(
+        $scope.newCustomer.name, $scope.newCustomer.surname, $scope.newCustomer.func, $scope.newCustomer.social_reason, $scope.newCustomer.billing_address,
+        $scope.newCustomer.delivery_address, $scope.newCustomer.zipcode, $scope.newCustomer.city, $scope.newCustomer.country, $scope.newCustomer.email,
+        $scope.newCustomer.mobile_phone, $scope.newCustomer.fixed_phone, $scope.newCustomer.status, $scope.newCustomer.comment, $scope.newCustomer.created_date, function(response) {
+        if(!response.error) {
+            $state.go('dashboard.customers');
+        } else {
+            $scope.error = response.error.message;
+            $scope.dataLoading = false;
+        }
+      });
+    }
+
   }]);

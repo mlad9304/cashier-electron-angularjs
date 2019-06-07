@@ -79,5 +79,34 @@ angular.module('Dashboard')
               });
         };
 
+        service.GetAllCustomers = function (callback) {
+
+          const payload = {
+            name: 'getAllCustomers',
+            param: {  }
+           };
+          $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+              .then(function (response) {
+                callback(response.data);
+              }, function (error) {
+                console.log(error);
+              });
+
+        };
+
+        service.AddCustomer = function (name, surname, func, social_reason, billing_address, delivery_address, zipcode, city, country, email, mobile_phone, fixed_phone, status, comment, created_date, callback ) {
+          const payload = {
+            name: 'addCustomer',
+            param: { name, surname, func, social_reason, billing_address, delivery_address, zipcode, city, country, email, mobile_phone, fixed_phone, status, comment, created_date }
+          }
+
+          $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+              .then(function (response) {
+                callback(response.data);
+              }, function (error) {
+                console.log(error);
+              });
+        };
+
         return service;
     }]);

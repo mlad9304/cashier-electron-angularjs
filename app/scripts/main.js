@@ -55,16 +55,16 @@ angular.module('mainApp', [
           controller: 'UserDeleteController'
         })
 
-        .state('dashboard.dashboard1', {
-          url: '/dashboard1',
-          controller: 'DashboardController',
-          templateUrl: 'modules/dashboard/views/dashboard1.html'
+        .state('dashboard.customers', {
+          url: '/customers',
+          controller: 'CustomersController',
+          templateUrl: 'modules/dashboard/views/customers.html'
         })
 
-        .state('dashboard.dashboard2', {
-          url: '/dashboard2',
-          controller: 'DashboardController',
-          templateUrl: 'modules/dashboard/views/dashboard2.html'
+        .state('dashboard.add_customer', {
+          url: '/add_customer',
+          controller: 'AddCustomerController',
+          templateUrl: 'modules/dashboard/views/add_customer.html'
         })
 
     $urlRouterProvider.otherwise('/login');
