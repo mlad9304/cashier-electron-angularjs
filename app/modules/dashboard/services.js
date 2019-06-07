@@ -137,5 +137,19 @@ angular.module('Dashboard')
               });
         };
 
+        service.DeleteCustomer = function (id, callback) {
+          const payload = {
+            name: 'deleteCustomer',
+            param: { id }
+          }
+
+          $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+              .then(function (response) {
+                callback(response.data);
+              }, function (error) {
+                console.log(error);
+              });
+        };
+
         return service;
     }]);

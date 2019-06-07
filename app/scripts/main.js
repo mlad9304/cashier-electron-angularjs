@@ -73,6 +73,11 @@ angular.module('mainApp', [
           templateUrl: 'modules/dashboard/views/customer_edit.html'
         })
 
+        .state('dashboard.customer_delete', {
+          url: '/customer_delete/{id}',
+          controller: 'CustomerDeleteController'
+        });
+
     $urlRouterProvider.otherwise('/login');
 }])
 

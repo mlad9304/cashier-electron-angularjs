@@ -85,6 +85,24 @@ angular.module('Dashboard')
 
   }])
 
+.controller('UserDeleteController',
+  ['$scope', '$window', '$state', 'DashboardService', '$stateParams',
+  function ($scope, $window, $state, DashboardService, $stateParams) {
+    if ($stateParams.id) {
+      DashboardService.DeleteUser($stateParams.id, function(response) {
+        if (response.response) {
+          if(!response.error) {
+            $state.go('dashboard.users');
+          } else {
+              $scope.error = response.error.message;
+              $scope.dataLoading = false;
+          }
+        }
+      });
+    }
+
+  }])
+
 .controller('CustomersController',
   ['$scope', '$window', '$state', 'DashboardService',
   function ($scope, $window, $state, DashboardService) {
@@ -149,6 +167,24 @@ angular.module('Dashboard')
         } else {
             $scope.error = response.error.message;
             $scope.dataLoading = false;
+        }
+      });
+    }
+
+  }])
+
+.controller('CustomerDeleteController',
+  ['$scope', '$window', '$state', 'DashboardService', '$stateParams',
+  function ($scope, $window, $state, DashboardService, $stateParams) {
+    if ($stateParams.id) {
+      DashboardService.DeleteCustomer($stateParams.id, function(response) {
+        if (response.response) {
+          if(!response.error) {
+            $state.go('dashboard.customers');
+          } else {
+              $scope.error = response.error.message;
+              $scope.dataLoading = false;
+          }
         }
       });
     }
