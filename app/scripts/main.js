@@ -67,6 +67,12 @@ angular.module('mainApp', [
           templateUrl: 'modules/dashboard/views/add_customer.html'
         })
 
+        .state('dashboard.customer_edit', {
+          url: '/customer_edit/{id}',
+          controller: 'CustomerEditController',
+          templateUrl: 'modules/dashboard/views/customer_edit.html'
+        })
+
     $urlRouterProvider.otherwise('/login');
 }])
 

@@ -1,75 +1,75 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-      Add customer
+      Update customer
     </h1>
   </section>
 
   <section class="content">
     <div class="register-box-body">
-      <p class="login-box-msg">Add customer</p>
+      <p class="login-box-msg">Update customer information</p>
 
       <div ng-show="error" class="alert alert-danger">{{error}}</div>
 
-      <form name="form" ng-submit="addCustomer()" role="form">
+      <form name="form" ng-submit="updateCustomer()" role="form">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Name" ng-model="newCustomer.name" required>
+          <input type="text" class="form-control" placeholder="Name" ng-model="detailCustomer.name" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Sur name" ng-model="newCustomer.surname" required>
+          <input type="text" class="form-control" placeholder="Sur name" ng-model="detailCustomer.surname" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Function" ng-model="newCustomer.func" required>
+          <input type="text" class="form-control" placeholder="Function" ng-model="detailCustomer.func" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Social reason" ng-model="newCustomer.social_reason" required>
+          <input type="text" class="form-control" placeholder="Social reason" ng-model="detailCustomer.social_reason" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Billing Address" ng-model="newCustomer.billing_address" required>
+          <input type="text" class="form-control" placeholder="Billing Address" ng-model="detailCustomer.billing_address" required>
           <span class="glyphicon glyphicon-home form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Delivery Address" ng-model="newCustomer.delivery_address" required>
+          <input type="text" class="form-control" placeholder="Delivery Address" ng-model="detailCustomer.delivery_address" required>
           <span class="glyphicon glyphicon-home form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Zipcode" ng-model="newCustomer.zipcode" required>
+          <input type="text" class="form-control" placeholder="Zipcode" ng-model="detailCustomer.zipcode" required>
           <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="City" ng-model="newCustomer.city" required>
+          <input type="text" class="form-control" placeholder="City" ng-model="detailCustomer.city" required>
           <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Country" ng-model="newCustomer.country" required>
+          <input type="text" class="form-control" placeholder="Country" ng-model="detailCustomer.country" required>
           <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="Email" ng-model="newCustomer.email" required>
+          <input type="email" class="form-control" placeholder="Email" ng-model="detailCustomer.email" required>
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Mobile Phone" ng-model="newCustomer.mobile_phone" required>
+          <input type="text" class="form-control" placeholder="Mobile Phone" ng-model="detailCustomer.mobile_phone" required>
           <span class="glyphicon glyphicon-phone form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Fixed Phone" ng-model="newCustomer.fixed_phone" required>
+          <input type="text" class="form-control" placeholder="Fixed Phone" ng-model="detailCustomer.fixed_phone" required>
           <span class="glyphicon glyphicon-phone form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Status" ng-model="newCustomer.status" required>
+          <input type="text" class="form-control" placeholder="Status" ng-model="detailCustomer.status" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Comment" ng-model="newCustomer.comment">
+          <input type="text" class="form-control" placeholder="Comment" ng-model="detailCustomer.comment">
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Created date" ng-model="newCustomer.created_date" required>
+          <input type="text" class="form-control" placeholder="Created date" ng-model="detailCustomer.created_date" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="row">

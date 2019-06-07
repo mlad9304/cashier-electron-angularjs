@@ -121,4 +121,36 @@ angular.module('Dashboard')
       });
     }
 
+  }])
+
+.controller('CustomerEditController',
+  ['$scope', '$window', '$state', 'DashboardService', '$stateParams',
+  function ($scope, $window, $state, DashboardService, $stateParams) {
+
+    if ($stateParams.id) {
+      DashboardService.GetCustomer($stateParams.id, function(response) {
+        if (response.response) {
+          const { customer } = response.response.result;
+          if (customer) {
+            $scope.detailCustomer = customer;
+          }
+        }
+      });
+    }
+
+    $scope.updateCustomer = function () {
+      $scope.dataLoading = true;
+      DashboardService.UpdateCustomer(
+        $scope.detailCustomer.id, $scope.detailCustomer.name, $scope.detailCustomer.surname, $scope.detailCustomer.func, $scope.detailCustomer.social_reason, $scope.detailCustomer.billing_address,
+        $scope.detailCustomer.delivery_address, $scope.detailCustomer.zipcode, $scope.detailCustomer.city, $scope.detailCustomer.country, $scope.detailCustomer.email,
+        $scope.detailCustomer.mobile_phone, $scope.detailCustomer.fixed_phone, $scope.detailCustomer.status, $scope.detailCustomer.comment, $scope.detailCustomer.created_date, function(response) {
+        if(!response.error) {
+            $state.go('dashboard.customers');
+        } else {
+            $scope.error = response.error.message;
+            $scope.dataLoading = false;
+        }
+      });
+    }
+
   }]);
