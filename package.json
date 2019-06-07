@@ -1,11 +1,11 @@
 {
   "name": "cashier-app",
-  "productName": "Cashier App",
-  "description": "Electron application for cashier",
+  "productName": "Mr Informatique Caisse",
+  "description": "Mr Informatique Caisse",
   "version": "0.0.0",
   "private": true,
-  "author": "Jay Chan",
-  "copyright": "© 2019, Jay inc.",
+  "author": "",
+  "copyright": "",
   "homepage": "http://example.com",
   "main": "app/background.js",
   "build": {
