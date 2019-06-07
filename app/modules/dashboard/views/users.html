@@ -23,6 +23,8 @@
               <th>Address</th>
               <th>City</th>
               <th>Email</th>
+              <th></th>
+              <th></th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +34,12 @@
               <td>{{user.address}}</td>
               <td>{{user.city}}</td>
               <td>{{user.email}}</td>
+              <td>
+                <a ui-sref="dashboard.user_edit({id:user.id})" type="button" class="btn btn-block btn-success btn-sm">Edit</a>
+              </td>
+              <td>
+                <button type="button" class="btn btn-block btn-danger btn-sm">Delete</button>
+              </td>
             </tr>
             </tbody>
           </table>

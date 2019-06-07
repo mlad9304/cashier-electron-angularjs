@@ -33,9 +33,15 @@ angular.module('mainApp', [
         })
 
         .state('dashboard.users', {
-          url: '/dashboard1',
+          url: '/users',
           controller: 'DashboardController',
           templateUrl: 'modules/dashboard/views/users.html'
+        })
+
+        .state('dashboard.user_edit', {
+          url: '/user_edit/{id}',
+          controller: 'UserEditController',
+          templateUrl: 'modules/dashboard/views/user_edit.html'
         })
 
         .state('dashboard.dashboard1', {

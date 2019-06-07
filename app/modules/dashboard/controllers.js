@@ -3,8 +3,8 @@
 angular.module('Dashboard')
 
 .controller('DashboardController',
-  ['$scope', '$window', '$state', 'AuthenticationService', 'DashboardService',
-  function ($scope, $window, $state, AuthenticationService, DashboardService) {
+  ['$scope', '$window', '$state', 'AuthenticationService', 'DashboardService', '$stateParams',
+  function ($scope, $window, $state, AuthenticationService, DashboardService, $stateParams) {
     // $('#users-table').DataTable();
     $('.sidebar-menu').tree();
 
@@ -30,4 +30,36 @@ angular.module('Dashboard')
       $scope.surname = globals.currentUser.surname;
       $scope.email = globals.currentUser.email;
     }
+  }])
+
+.controller('UserEditController',
+  ['$scope', '$window', '$state', 'DashboardService', '$stateParams',
+  function ($scope, $window, $state, DashboardService, $stateParams) {
+
+    if ($stateParams.id) {
+      DashboardService.GetUser($stateParams.id, function(response) {
+        if (response.response) {
+          const { user } = response.response.result;
+          if (user) {
+            $scope.detailUser = user;
+            $scope.detailUser.password = '';
+          }
+        }
+      });
+    }
+
+    $scope.updateUser = function () {
+      $scope.dataLoading = true;
+      DashboardService.UpdateUser(
+        $scope.detailUser.id, $scope.detailUser.name, $scope.detailUser.surname, $scope.detailUser.address, $scope.detailUser.zipcode,
+        $scope.detailUser.city, $scope.detailUser.phone, $scope.detailUser.email, function(response) {
+        if(!response.error) {
+            $state.go('dashboard.users');
+        } else {
+            $scope.error = response.error.message;
+            $scope.dataLoading = false;
+        }
+      });
+    }
+
   }]);
