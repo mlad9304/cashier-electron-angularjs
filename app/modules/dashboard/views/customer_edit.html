@@ -1,51 +1,51 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-      Update customer
+      Modifier client
     </h1>
   </section>
 
   <section class="content">
     <div class="register-box-body">
-      <p class="login-box-msg">Update customer information</p>
+      <p class="login-box-msg">Modifier les informations des clients</p>
 
       <div ng-show="error" class="alert alert-danger">{{error}}</div>
 
       <form name="form" ng-submit="updateCustomer()" role="form">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Name" ng-model="detailCustomer.name" required>
+          <input type="text" class="form-control" placeholder="Prénom" ng-model="detailCustomer.name" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Sur name" ng-model="detailCustomer.surname" required>
+          <input type="text" class="form-control" placeholder="Nom" ng-model="detailCustomer.surname" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Function" ng-model="detailCustomer.func" required>
+          <input type="text" class="form-control" placeholder="Fonction" ng-model="detailCustomer.func" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Social reason" ng-model="detailCustomer.social_reason" required>
+          <input type="text" class="form-control" placeholder="Nom de l’entreprise" ng-model="detailCustomer.social_reason" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Billing Address" ng-model="detailCustomer.billing_address" required>
+          <input type="text" class="form-control" placeholder="Adresse de facturation" ng-model="detailCustomer.billing_address" required>
           <span class="glyphicon glyphicon-home form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Delivery Address" ng-model="detailCustomer.delivery_address" required>
+          <input type="text" class="form-control" placeholder="Adresse de livraison" ng-model="detailCustomer.delivery_address" required>
           <span class="glyphicon glyphicon-home form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Zipcode" ng-model="detailCustomer.zipcode" required>
+          <input type="text" class="form-control" placeholder="Code postal" ng-model="detailCustomer.zipcode" required>
           <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="City" ng-model="detailCustomer.city" required>
+          <input type="text" class="form-control" placeholder="Ville" ng-model="detailCustomer.city" required>
           <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Country" ng-model="detailCustomer.country" required>
+          <input type="text" class="form-control" placeholder="Pays" ng-model="detailCustomer.country" required>
           <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
@@ -53,23 +53,23 @@
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Mobile Phone" ng-model="detailCustomer.mobile_phone" required>
+          <input type="text" class="form-control" placeholder="Téléphone portable" ng-model="detailCustomer.mobile_phone" required>
           <span class="glyphicon glyphicon-phone form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Fixed Phone" ng-model="detailCustomer.fixed_phone" required>
+          <input type="text" class="form-control" placeholder="Téléphone fixe" ng-model="detailCustomer.fixed_phone" required>
           <span class="glyphicon glyphicon-phone form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Status" ng-model="detailCustomer.status" required>
+          <input type="text" class="form-control" placeholder="Statut" ng-model="detailCustomer.status" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Comment" ng-model="detailCustomer.comment">
+          <input type="text" class="form-control" placeholder="Commentaire" ng-model="detailCustomer.comment">
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Created date" ng-model="detailCustomer.created_date" required>
+          <input type="text" class="form-control" placeholder="Date de création" ng-model="detailCustomer.created_date" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="row">
@@ -80,7 +80,7 @@
           <div class="col-xs-4">
             <button type="submit" class="btn btn-primary btn-block btn-flat"
               ng-disabled="form.$invalid || dataLoading">
-              Save
+              Sauvergarder
               &nbsp;<img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
             </button>
           </div>

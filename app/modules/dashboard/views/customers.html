@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-      Customers
+      Clients
     </h1>
   </section>
 
@@ -9,7 +9,7 @@
   <section class="content">
     <div class="row">
       <div class="col-xs-2">
-        <a ui-sref="dashboard.add_customer" type="button" class="btn btn-block btn-primary">Add customer</a>
+        <a ui-sref="dashboard.add_customer" type="button" class="btn btn-block btn-primary">Ajouter client</a>
       </div>
     </div>
     <div class="row">
@@ -17,19 +17,19 @@
 
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Customers information</h3>
+            <h3 class="box-title">Liste des clients</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <table id="users-table" class="table table-bordered table-striped">
+            <table id="customers-table" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Billing Address</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>email</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Adresse de facturation</th>
+                <th>Ville</th>
+                <th>Pays</th>
+                <th>Email</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -43,10 +43,10 @@
                 <td>{{customer.country}}</td>
                 <td>{{customer.email}}</td>
                 <td>
-                  <a ui-sref="dashboard.customer_edit({id:customer.id})" type="button" class="btn btn-block btn-success btn-sm">Edit</a>
+                  <a ui-sref="dashboard.customer_edit({id:customer.id})" type="button" class="btn btn-block btn-success btn-sm">Editer</a>
                 </td>
                 <td>
-                  <a ui-sref="dashboard.customer_delete({id:customer.id})" type="button" class="btn btn-block btn-danger btn-sm">Delete</a>
+                  <a ui-sref="dashboard.customer_delete({id:customer.id})" type="button" class="btn btn-block btn-danger btn-sm">Supprimer</a>
                 </td>
               </tr>
               </tbody>

@@ -3,9 +3,9 @@
 angular.module('Dashboard')
 
 .controller('DashboardController',
-  ['$scope', '$window', '$state', 'AuthenticationService', 'DashboardService', '$stateParams',
-  function ($scope, $window, $state, AuthenticationService, DashboardService, $stateParams) {
-    // $('#users-table').DataTable();
+  ['$scope', '$window', '$state', 'AuthenticationService', 'DashboardService', '$stateParams', '$timeout',
+  function ($scope, $window, $state, AuthenticationService, DashboardService, $stateParams, $timeout) {
+
     $('.sidebar-menu').tree();
 
     $scope.users = [];
@@ -17,6 +17,41 @@ angular.module('Dashboard')
           $scope.users = users;
         }
       }
+
+      $timeout(function () {
+        $('#users-table').DataTable({
+          language: {
+            "sProcessing":     "Traitement en cours...",
+            "sSearch":         "Rechercher&nbsp;:",
+            "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
+            "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+            "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
+            "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+            "sInfoPostFix":    "",
+            "sLoadingRecords": "Chargement en cours...",
+            "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+            "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+            "oPaginate": {
+                "sFirst":      "Premier",
+                "sPrevious":   "Pr&eacute;c&eacute;dent",
+                "sNext":       "Suivant",
+                "sLast":       "Dernier"
+            },
+            "oAria": {
+                "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+            },
+            "select": {
+                    "rows": {
+                        _: "%d lignes séléctionnées",
+                        0: "Aucune ligne séléctionnée",
+                        1: "1 ligne séléctionnée"
+                    }
+            }
+          },
+          "bDestroy": true
+        });
+      }, 500);
     });
 
     $scope.logout = function () {
@@ -104,8 +139,8 @@ angular.module('Dashboard')
   }])
 
 .controller('CustomersController',
-  ['$scope', '$window', '$state', 'DashboardService',
-  function ($scope, $window, $state, DashboardService) {
+  ['$scope', '$window', '$state', 'DashboardService', '$timeout',
+  function ($scope, $window, $state, DashboardService, $timeout) {
     $scope.customers = [];
 
     DashboardService.GetAllCustomers(function(response) {
@@ -115,6 +150,41 @@ angular.module('Dashboard')
           $scope.customers = customers;
         }
       }
+
+      $timeout(function () {
+        $('#customers-table').DataTable({
+          language: {
+            "sProcessing":     "Traitement en cours...",
+            "sSearch":         "Rechercher&nbsp;:",
+            "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
+            "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+            "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
+            "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+            "sInfoPostFix":    "",
+            "sLoadingRecords": "Chargement en cours...",
+            "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+            "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+            "oPaginate": {
+                "sFirst":      "Premier",
+                "sPrevious":   "Pr&eacute;c&eacute;dent",
+                "sNext":       "Suivant",
+                "sLast":       "Dernier"
+            },
+            "oAria": {
+                "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+            },
+            "select": {
+                    "rows": {
+                        _: "%d lignes séléctionnées",
+                        0: "Aucune ligne séléctionnée",
+                        1: "1 ligne séléctionnée"
+                    }
+            }
+          },
+          "bDestroy": true
+        });
+      }, 500);
     });
 
   }])

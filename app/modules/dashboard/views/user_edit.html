@@ -1,39 +1,39 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Update user
+    Modifier utilisateur
   </h1>
 </section>
 
 <section class="content">
   <div class="register-box-body">
-    <p class="login-box-msg">Update user information</p>
+    <p class="login-box-msg">Modifier les informations des utilisateurs</p>
 
     <div ng-show="error" class="alert alert-danger">{{error}}</div>
 
     <form name="form" ng-submit="updateUser()" role="form">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Name" ng-model="detailUser.name" required>
+        <input type="text" class="form-control" placeholder="Prénom" ng-model="detailUser.name" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Sur name" ng-model="detailUser.surname" required>
+        <input type="text" class="form-control" placeholder="Nom" ng-model="detailUser.surname" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Address" ng-model="detailUser.address" required>
+        <input type="text" class="form-control" placeholder="Adresse" ng-model="detailUser.address" required>
         <span class="glyphicon glyphicon-home form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Zipcode" ng-model="detailUser.zipcode" required>
+        <input type="text" class="form-control" placeholder="Code postal" ng-model="detailUser.zipcode" required>
         <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="City" ng-model="detailUser.city" required>
+        <input type="text" class="form-control" placeholder="Ville" ng-model="detailUser.city" required>
         <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Phone" ng-model="detailUser.phone" required>
+        <input type="text" class="form-control" placeholder="Téléphone" ng-model="detailUser.phone" required>
         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -48,7 +48,7 @@
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat"
             ng-disabled="form.$invalid || dataLoading">
-            Save
+            Sauvergarder
             &nbsp;<img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
           </button>
         </div>
