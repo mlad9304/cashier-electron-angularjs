@@ -13,6 +13,10 @@
 
       <form name="form" ng-submit="updateCustomer()" role="form">
         <div class="form-group has-feedback">
+          <input type="text" class="form-control" ng-model="detailCustomer.id" disabled>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Prénom" ng-model="detailCustomer.name" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
@@ -33,10 +37,6 @@
           <span class="glyphicon glyphicon-home form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Adresse de livraison" ng-model="detailCustomer.delivery_address" required>
-          <span class="glyphicon glyphicon-home form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Code postal" ng-model="detailCustomer.zipcode" required>
           <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
         </div>
@@ -47,6 +47,10 @@
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Pays" ng-model="detailCustomer.country" required>
           <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Adresse de livraison" ng-model="detailCustomer.delivery_address" required>
+          <span class="glyphicon glyphicon-home form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
           <input type="email" class="form-control" placeholder="Email" ng-model="detailCustomer.email" required>

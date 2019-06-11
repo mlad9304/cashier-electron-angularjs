@@ -13,6 +13,10 @@
 
     <form name="form" ng-submit="updateUser()" role="form">
       <div class="form-group has-feedback">
+        <input type="text" class="form-control" ng-model="detailUser.id" disabled>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Prénom" ng-model="detailUser.name" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
@@ -39,6 +43,9 @@
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email" ng-model="detailUser.email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group">
+        <select class="form-control" ng-options="group as group.name for group in groups track by group.id" ng-model="detailUser.group"></select>
       </div>
       <div class="row">
         <div class="col-xs-8">

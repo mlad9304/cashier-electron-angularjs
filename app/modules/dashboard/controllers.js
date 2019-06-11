@@ -3,18 +3,30 @@
 angular.module('Dashboard')
 
 .controller('DashboardController',
-  ['$scope', '$window', '$state', 'AuthenticationService', 'DashboardService', '$stateParams', '$timeout',
-  function ($scope, $window, $state, AuthenticationService, DashboardService, $stateParams, $timeout) {
+  ['$rootScope', '$scope', '$window', '$state', 'AuthenticationService', 'DashboardService', '$stateParams', '$timeout',
+  function ($rootScope, $scope, $window, $state, AuthenticationService, DashboardService, $stateParams, $timeout) {
 
     $('.sidebar-menu').tree();
+
+    if ($rootScope.globals.currentUser) {
+      $scope.currentUserGroup = $rootScope.globals.currentUser.group;
+    }
 
     $scope.users = [];
 
     DashboardService.GetAllUsers(function(response) {
       if (response.response) {
-        const { users } = response.response.result;
+        const { users, groups } = response.response.result;
         if (users) {
           $scope.users = users;
+        }
+        if (groups) {
+          $scope.groups = groups;
+          const groupsHash = {};
+          groups.forEach(group => {
+            groupsHash[group.id] = group;
+          })
+          $scope.groupsHash = groupsHash;
         }
       }
 
@@ -49,7 +61,8 @@ angular.module('Dashboard')
                     }
             }
           },
-          "bDestroy": true
+          "bDestroy": true,
+          "ordering": false
         });
       }, 500);
     });
@@ -70,7 +83,6 @@ angular.module('Dashboard')
 .controller('UserEditController',
   ['$scope', '$window', '$state', 'DashboardService', '$stateParams',
   function ($scope, $window, $state, DashboardService, $stateParams) {
-
     if ($stateParams.id) {
       DashboardService.GetUser($stateParams.id, function(response) {
         if (response.response) {
@@ -78,16 +90,21 @@ angular.module('Dashboard')
           if (user) {
             $scope.detailUser = user;
             $scope.detailUser.password = '';
+            if (user.group) {
+              $scope.detailUser.group = $scope.groupsHash[user.group];
+            }
           }
+
         }
       });
     }
 
     $scope.updateUser = function () {
       $scope.dataLoading = true;
+      const group = $scope.detailUser.group ? $scope.detailUser.group.id : null;
       DashboardService.UpdateUser(
         $scope.detailUser.id, $scope.detailUser.name, $scope.detailUser.surname, $scope.detailUser.address, $scope.detailUser.zipcode,
-        $scope.detailUser.city, $scope.detailUser.phone, $scope.detailUser.email, function(response) {
+        $scope.detailUser.city, $scope.detailUser.phone, $scope.detailUser.email, group, function(response) {
         if(!response.error) {
             $state.go('dashboard.users');
         } else {
@@ -103,12 +120,12 @@ angular.module('Dashboard')
   ['$scope', '$window', '$state', 'DashboardService',
   function ($scope, $window, $state, DashboardService) {
     $scope.newUser = {};
-
     $scope.addUser = function () {
       $scope.dataLoading = true;
+      const group = $scope.newUser.group ? $scope.newUser.group.id : null;
       DashboardService.AddUser(
         $scope.newUser.name, $scope.newUser.surname, $scope.newUser.address, $scope.newUser.zipcode,
-        $scope.newUser.city, $scope.newUser.phone, $scope.newUser.email, $scope.newUser.password, function(response) {
+        $scope.newUser.city, $scope.newUser.phone, $scope.newUser.email, $scope.newUser.password, group, function(response) {
         if(!response.error) {
             $state.go('dashboard.users');
         } else {
@@ -128,6 +145,89 @@ angular.module('Dashboard')
         if (response.response) {
           if(!response.error) {
             $state.go('dashboard.users');
+          } else {
+              $scope.error = response.error.message;
+              $scope.dataLoading = false;
+          }
+        }
+      });
+    }
+
+  }])
+
+  .controller('GroupsController',
+  ['$scope', '$window', '$state', 'DashboardService', '$timeout',
+  function ($scope, $window, $state, DashboardService, $timeout) {
+    $scope.groups = [];
+
+    DashboardService.GetAllGroups(function(response) {
+      if (response.response) {
+        const { groups } = response.response.result;
+        if (groups) {
+          $scope.groups = groups;
+        }
+      }
+
+    });
+
+  }])
+
+.controller('AddGroupController',
+  ['$scope', '$window', '$state', 'DashboardService',
+  function ($scope, $window, $state, DashboardService) {
+    $scope.newGroup = {};
+
+    $scope.addGroup = function () {
+      $scope.dataLoading = true;
+      DashboardService.AddGroup($scope.newGroup.name, function(response) {
+        if(!response.error) {
+            $state.go('dashboard.groups');
+        } else {
+            $scope.error = response.error.message;
+            $scope.dataLoading = false;
+        }
+      });
+    }
+
+  }])
+
+.controller('GroupEditController',
+  ['$scope', '$window', '$state', 'DashboardService', '$stateParams',
+  function ($scope, $window, $state, DashboardService, $stateParams) {
+
+    if ($stateParams.id) {
+      DashboardService.GetGroup($stateParams.id, function(response) {
+        if (response.response) {
+          const { group } = response.response.result;
+          if (group) {
+            $scope.detailGroup = group;
+          }
+        }
+      });
+    }
+
+    $scope.updateGroup = function () {
+      $scope.dataLoading = true;
+      DashboardService.UpdateGroup($scope.detailGroup.id, $scope.detailGroup.name, function(response) {
+        if(!response.error) {
+            $state.go('dashboard.groups');
+        } else {
+            $scope.error = response.error.message;
+            $scope.dataLoading = false;
+        }
+      });
+    }
+
+  }])
+
+.controller('GroupDeleteController',
+  ['$scope', '$window', '$state', 'DashboardService', '$stateParams',
+  function ($scope, $window, $state, DashboardService, $stateParams) {
+    if ($stateParams.id) {
+      DashboardService.DeleteGroup($stateParams.id, function(response) {
+        if (response.response) {
+          if(!response.error) {
+            $state.go('dashboard.groups');
           } else {
               $scope.error = response.error.message;
               $scope.dataLoading = false;
@@ -182,7 +282,8 @@ angular.module('Dashboard')
                     }
             }
           },
-          "bDestroy": true
+          "bDestroy": true,
+          "ordering": false
         });
       }, 500);
     });

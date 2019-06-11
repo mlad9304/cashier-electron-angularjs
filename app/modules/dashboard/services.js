@@ -7,6 +7,78 @@ angular.module('Dashboard')
     function ($http, $rootScope, $window) {
         var service = {};
 
+        service.GetAllGroups = function (callback) {
+
+            const payload = {
+              name: 'getAllGroups',
+              param: {  }
+            };
+            $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+                .then(function (response) {
+                  callback(response.data);
+                }, function (error) {
+                  console.log(error);
+                });
+
+        };
+
+        service.AddGroup = function (name, callback) {
+          const payload = {
+            name: 'addGroup',
+            param: { name }
+          }
+
+          $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+              .then(function (response) {
+                callback(response.data);
+              }, function (error) {
+                console.log(error);
+              });
+        };
+
+        service.GetGroup = function (id, callback) {
+
+          const payload = {
+            name: 'getGroup',
+            param: { id }
+          };
+          $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+              .then(function (response) {
+                callback(response.data);
+              }, function (error) {
+                console.log(error);
+              });
+
+        };
+
+        service.UpdateGroup = function (id, name, callback) {
+          const payload = {
+            name: 'updateGroup',
+            param: { id, name }
+          }
+
+          $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+              .then(function (response) {
+                callback(response.data);
+              }, function (error) {
+                console.log(error);
+              });
+        };
+
+        service.DeleteGroup = function (id, callback) {
+          const payload = {
+            name: 'deleteGroup',
+            param: { id }
+          }
+
+          $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
+              .then(function (response) {
+                callback(response.data);
+              }, function (error) {
+                console.log(error);
+              });
+        };
+
         service.GetAllUsers = function (callback) {
 
             const payload = {
@@ -37,10 +109,10 @@ angular.module('Dashboard')
 
         };
 
-        service.UpdateUser = function (id, name, surname, address, zipcode, city, phone, email, callback) {
+        service.UpdateUser = function (id, name, surname, address, zipcode, city, phone, email, group, callback) {
           const payload = {
             name: 'updateUser',
-            param: { id, name, surname, address, zipcode, city, phone, email }
+            param: { id, name, surname, address, zipcode, city, phone, email, group }
           }
 
           $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
@@ -65,10 +137,10 @@ angular.module('Dashboard')
               });
         };
 
-        service.AddUser = function (name, surname, address, zipcode, city, phone, email, password, callback) {
+        service.AddUser = function (name, surname, address, zipcode, city, phone, email, password, group, callback) {
           const payload = {
             name: 'register',
-            param: { name, surname, address, zipcode, city, phone, email, password }
+            param: { name, surname, address, zipcode, city, phone, email, password, group }
           }
 
           $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)

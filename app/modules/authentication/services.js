@@ -38,10 +38,10 @@ angular.module('Authentication')
                 });
         };
 
-        service.SetCredentials = function (token, name, surname, email) {
+        service.SetCredentials = function (token, name, surname, email, group) {
 
             $rootScope.globals = {
-                currentUser: { token, name, surname, email }
+                currentUser: { token, name, surname, email, group }
             };
 
             $http.defaults.headers.common['Authorization'] = 'Bearer ' + token; // jshint ignore:line

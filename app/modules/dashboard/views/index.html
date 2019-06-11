@@ -59,7 +59,12 @@
       <section class="sidebar">
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-          <li>
+          <li ng-if="currentUserGroup == 2">
+            <a ui-sref=".groups">
+              <i class="fa fa-th"></i> <span>Groupes</span>
+            </a>
+          </li>
+          <li ng-if="currentUserGroup == 2">
             <a ui-sref=".users">
               <i class="fa fa-th"></i> <span>Utilisateurs</span>
             </a>

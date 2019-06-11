@@ -32,6 +32,29 @@ angular.module('mainApp', [
           templateUrl: 'modules/dashboard/views/index.html'
         })
 
+        .state('dashboard.groups', {
+          url: '/groups',
+          controller: 'GroupsController',
+          templateUrl: 'modules/dashboard/views/groups.html'
+        })
+
+        .state('dashboard.add_group', {
+          url: '/add_group',
+          controller: 'AddGroupController',
+          templateUrl: 'modules/dashboard/views/add_group.html'
+        })
+
+        .state('dashboard.group_edit', {
+          url: '/group_edit/{id}',
+          controller: 'GroupEditController',
+          templateUrl: 'modules/dashboard/views/group_edit.html'
+        })
+
+        .state('dashboard.group_delete', {
+          url: '/group_delete/{id}',
+          controller: 'GroupDeleteController'
+        })
+
         .state('dashboard.users', {
           url: '/users',
           controller: 'DashboardController',
