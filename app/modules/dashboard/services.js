@@ -166,10 +166,10 @@ angular.module('Dashboard')
 
         };
 
-        service.AddCustomer = function (name, surname, func, social_reason, billing_address, delivery_address, zipcode, city, country, email, mobile_phone, fixed_phone, status, comment, created_date, callback ) {
+        service.AddCustomer = function (name, surname, func, social_reason, billing_address, delivery_address, zipcode_billing, city_billing, country_billing, zipcode_delivery, city_delivery, country_delivery, email, mobile_phone, fixed_phone, status, comment, created_date, special_condition, callback ) {
           const payload = {
             name: 'addCustomer',
-            param: { name, surname, func, social_reason, billing_address, delivery_address, zipcode, city, country, email, mobile_phone, fixed_phone, status, comment, created_date }
+            param: { name, surname, func, social_reason, billing_address, delivery_address, zipcode_billing, city_billing, country_billing, zipcode_delivery, city_delivery, country_delivery, email, mobile_phone, fixed_phone, status, comment, created_date, special_condition }
           }
 
           $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)
@@ -195,10 +195,10 @@ angular.module('Dashboard')
 
         };
 
-        service.UpdateCustomer = function (id, name, surname, func, social_reason, billing_address, delivery_address, zipcode, city, country, email, mobile_phone, fixed_phone, status, comment, created_date, callback) {
+        service.UpdateCustomer = function (id, name, surname, func, social_reason, billing_address, delivery_address, zipcode_billing, city_billing, country_billing, zipcode_delivery, city_delivery, country_delivery, email, mobile_phone, fixed_phone, status, comment, created_date, special_condition, callback) {
           const payload = {
             name: 'updateCustomer',
-            param: { id, name, surname, func, social_reason, billing_address, delivery_address, zipcode, city, country, email, mobile_phone, fixed_phone, status, comment, created_date }
+            param: { id, name, surname, func, social_reason, billing_address, delivery_address, zipcode_billing, city_billing, country_billing, zipcode_delivery, city_delivery, country_delivery, email, mobile_phone, fixed_phone, status, comment, created_date, special_condition }
           }
 
           $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)

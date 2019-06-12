@@ -27,8 +27,7 @@
                 <th>Prénom</th>
                 <th>Nom</th>
                 <th>Adresse de facturation</th>
-                <th>Ville</th>
-                <th>Pays</th>
+                <th>Adresse de livraison</th>
                 <th>Email</th>
                 <th></th>
                 <th></th>
@@ -39,8 +38,7 @@
                 <td>{{customer.name}}</td>
                 <td>{{customer.surname}}</td>
                 <td>{{customer.billing_address}}</td>
-                <td>{{customer.city}}</td>
-                <td>{{customer.country}}</td>
+                <td>{{customer.delivery_address}}</td>
                 <td>{{customer.email}}</td>
                 <td>
                   <a ui-sref="dashboard.customer_edit({id:customer.id})" type="button" class="btn btn-block btn-success btn-sm">Editer</a>

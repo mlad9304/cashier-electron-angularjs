@@ -9,7 +9,7 @@
     <div class="register-box-body">
       <p class="login-box-msg">Ajouter client</p>
 
-      <div ng-show="error" class="alert alert-danger">{{error}}</div>
+      <div ng-show="error" class="alert alert-danger">Vous avez oubliez un champs</div>
 
       <form name="form" ng-submit="addCustomer()" role="form">
         <div class="form-group has-feedback">
@@ -33,15 +33,15 @@
           <span class="glyphicon glyphicon-home form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Code postal" ng-model="newCustomer.zipcode" required>
+          <input type="text" class="form-control" placeholder="Code postal facturation" ng-model="newCustomer.zipcode_billing" required>
           <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Ville" ng-model="newCustomer.city" required>
+          <input type="text" class="form-control" placeholder="Ville facturation" ng-model="newCustomer.city_billing" required>
           <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Pays" ng-model="newCustomer.country" required>
+          <input type="text" class="form-control" placeholder="Pays facturation" ng-model="newCustomer.country_billing" required>
           <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
@@ -49,20 +49,35 @@
           <span class="glyphicon glyphicon-home form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Code postal livraison" ng-model="newCustomer.zipcode_delivery" required>
+          <span class="glyphicon glyphicon-tasks form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Ville livraison" ng-model="newCustomer.city_delivery" required>
+          <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Pays livraison" ng-model="newCustomer.country_delivery" required>
+          <span class="glyphicon glyphicon-map-marker form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
           <input type="email" class="form-control" placeholder="Email" ng-model="newCustomer.email" required>
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Téléphone portable" ng-model="newCustomer.mobile_phone" required>
+          <input type="text" class="form-control" placeholder="Téléphone portable" ng-model="newCustomer.mobile_phone">
           <span class="glyphicon glyphicon-phone form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Téléphone fixe" ng-model="newCustomer.fixed_phone" required>
+          <input type="text" class="form-control" placeholder="Téléphone fixe" ng-model="newCustomer.fixed_phone">
           <span class="glyphicon glyphicon-phone form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Statut" ng-model="newCustomer.status" required>
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <div class="form-group">
+          <select class="form-control" ng-model="newCustomer.status">
+            <option value="Standard">Standard</option>
+            <option value="Administration">Administration</option>
+            <option value="Revendeur">Revendeur</option>
+          </select>
         </div>
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Commentaire" ng-model="newCustomer.comment">
@@ -70,6 +85,14 @@
         </div>
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Date de création" ng-model="newCustomer.created_date" required>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Encours" value="0" disabled>
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Condition particulières" ng-model="newCustomer.special_condition" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="row">

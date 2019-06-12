@@ -299,8 +299,8 @@ angular.module('Dashboard')
       $scope.dataLoading = true;
       DashboardService.AddCustomer(
         $scope.newCustomer.name, $scope.newCustomer.surname, $scope.newCustomer.func, $scope.newCustomer.social_reason, $scope.newCustomer.billing_address,
-        $scope.newCustomer.delivery_address, $scope.newCustomer.zipcode, $scope.newCustomer.city, $scope.newCustomer.country, $scope.newCustomer.email,
-        $scope.newCustomer.mobile_phone, $scope.newCustomer.fixed_phone, $scope.newCustomer.status, $scope.newCustomer.comment, $scope.newCustomer.created_date, function(response) {
+        $scope.newCustomer.delivery_address, $scope.newCustomer.zipcode_billing, $scope.newCustomer.city_billing, $scope.newCustomer.country_billing, $scope.newCustomer.zipcode_delivery, $scope.newCustomer.city_delivery, $scope.newCustomer.country_delivery, $scope.newCustomer.email,
+        $scope.newCustomer.mobile_phone, $scope.newCustomer.fixed_phone, $scope.newCustomer.status, $scope.newCustomer.comment, $scope.newCustomer.created_date, $scope.newCustomer.special_condition, function(response) {
         if(!response.error) {
             $state.go('dashboard.customers');
         } else {
@@ -331,8 +331,8 @@ angular.module('Dashboard')
       $scope.dataLoading = true;
       DashboardService.UpdateCustomer(
         $scope.detailCustomer.id, $scope.detailCustomer.name, $scope.detailCustomer.surname, $scope.detailCustomer.func, $scope.detailCustomer.social_reason, $scope.detailCustomer.billing_address,
-        $scope.detailCustomer.delivery_address, $scope.detailCustomer.zipcode, $scope.detailCustomer.city, $scope.detailCustomer.country, $scope.detailCustomer.email,
-        $scope.detailCustomer.mobile_phone, $scope.detailCustomer.fixed_phone, $scope.detailCustomer.status, $scope.detailCustomer.comment, $scope.detailCustomer.created_date, function(response) {
+        $scope.detailCustomer.delivery_address, $scope.detailCustomer.zipcode_billing, $scope.detailCustomer.city_billing, $scope.detailCustomer.country_billing, $scope.detailCustomer.zipcode_delivery, $scope.detailCustomer.city_delivery, $scope.detailCustomer.country_delivery, $scope.detailCustomer.email,
+        $scope.detailCustomer.mobile_phone, $scope.detailCustomer.fixed_phone, $scope.detailCustomer.status, $scope.detailCustomer.comment, $scope.detailCustomer.created_date, $scope.detailCustomer.special_condition, function(response) {
         if(!response.error) {
             $state.go('dashboard.customers');
         } else {
