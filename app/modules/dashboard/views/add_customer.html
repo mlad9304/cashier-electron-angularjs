@@ -74,6 +74,7 @@
         </div>
         <div class="form-group">
           <select class="form-control" ng-model="newCustomer.status">
+            <option value="">-- Statut --</option>
             <option value="Standard">Standard</option>
             <option value="Administration">Administration</option>
             <option value="Revendeur">Revendeur</option>
@@ -84,15 +85,16 @@
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Date de création" ng-model="newCustomer.created_date" required>
+          <input type="text" class="form-control" placeholder="Date de création" ng-model="newCustomer.created_date" disabled>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
+          <label>En cours</label>
           <input type="text" class="form-control" placeholder="Encours" value="0" disabled>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Condition particulières" ng-model="newCustomer.special_condition" required>
+          <input type="text" class="form-control" placeholder="condition particulière %" ng-model="newCustomer.special_condition" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="row">

@@ -104,7 +104,7 @@ angular.module('Dashboard')
       const group = $scope.detailUser.group ? $scope.detailUser.group.id : null;
       DashboardService.UpdateUser(
         $scope.detailUser.id, $scope.detailUser.name, $scope.detailUser.surname, $scope.detailUser.address, $scope.detailUser.zipcode,
-        $scope.detailUser.city, $scope.detailUser.phone, $scope.detailUser.email, group, function(response) {
+        $scope.detailUser.city, $scope.detailUser.phone, $scope.detailUser.email, group, $scope.detailUser.password, function(response) {
         if(!response.error) {
             $state.go('dashboard.users');
         } else {
@@ -294,6 +294,7 @@ angular.module('Dashboard')
   ['$scope', '$window', '$state', 'DashboardService',
   function ($scope, $window, $state, DashboardService) {
     $scope.newCustomer = {};
+    $scope.newCustomer.created_date = moment().format('DD/MM/YYYY');
 
     $scope.addCustomer = function () {
       $scope.dataLoading = true;
@@ -322,6 +323,7 @@ angular.module('Dashboard')
           const { customer } = response.response.result;
           if (customer) {
             $scope.detailCustomer = customer;
+            $scope.detailCustomer.created_date = moment(customer.created_date).format('DD/MM/YYYY');
           }
         }
       });

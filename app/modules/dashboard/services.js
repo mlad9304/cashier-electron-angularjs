@@ -109,10 +109,10 @@ angular.module('Dashboard')
 
         };
 
-        service.UpdateUser = function (id, name, surname, address, zipcode, city, phone, email, group, callback) {
+        service.UpdateUser = function (id, name, surname, address, zipcode, city, phone, email, group, password, callback) {
           const payload = {
             name: 'updateUser',
-            param: { id, name, surname, address, zipcode, city, phone, email, group }
+            param: { id, name, surname, address, zipcode, city, phone, email, group, password }
           }
 
           $http.post('http://ns3119735.ip-51-38-41.eu/cashier-api/', payload)

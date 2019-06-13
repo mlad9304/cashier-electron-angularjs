@@ -18,11 +18,7 @@ angular.module('Authentication')
           if(response.response) {
               const { token, name, surname, email, group } = response.response.result;
               AuthenticationService.SetCredentials(token, name, surname, email, group);
-              if (group == 2) { // Admin
-                $state.go('dashboard.users');
-              } else {
-                $state.go('dashboard.customers');
-              }
+              $state.go('dashboard.customers');
 
           } else {
               $scope.error = response.error.message;
